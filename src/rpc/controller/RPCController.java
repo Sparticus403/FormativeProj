@@ -88,7 +88,7 @@ public class RPCController
 						System.out.println(item + "! Ok, it was a tie.");
 					}
 				}
-				else
+				else if(playerItem.equalsIgnoreCase(""))
 				{
 					System.out.println("If you didn't want to play, you could have just said so!");
 				}
