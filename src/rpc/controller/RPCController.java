@@ -18,30 +18,44 @@ public class RPCController
 
 	public void start()
 	{
-		String item = "";
-		int randomNumber = (int)(Math.random() * 2);
-		if(randomNumber <= 0)
-		{
-			item = itemList.get(0);
-		}
-		if(randomNumber == 1)
-		{
-			item = itemList.get(1);
-		}
-		if(randomNumber == 2)
-		{
-			item = itemList.get(2);
-		}
 		System.out.println("Wanna play a game?");
 		String response = keyboardInput.nextLine();
 		if(response.equalsIgnoreCase("yes") || response.equalsIgnoreCase("sure"))
 		{
 			System.out.println("Let's play Fire, Water, Earth it's kind of like rock, paper, scissors!");
 			System.out.println("Just pick one of the things, and we can start!");
-			for(int round = 1; round < 10; round ++)
+			
+			//need to find a way to create an endless loop until the player wants to stop.
+			while(1 < 2)
 			{
-				System.out.println("Have you picked yet?");
+				System.out.println("What have you picked?");
 				String playerItem = keyboardInput.nextLine();
+				String item = "";
+				
+				/*
+				 * Chooses a random number between 0 and 2
+				 * uses that number to pass one of the three if tests
+				 * Each if has it's own item to display.
+				 */
+				int randomNumber = (int)(Math.random() * 2);
+				
+				if(randomNumber == 0)
+				{
+					item = itemList.get(1);
+				}
+				if(randomNumber == 1)
+				{
+					item = itemList.get(2);
+				}
+				if(randomNumber == 2)
+				{
+					item = itemList.get(0);
+				}
+				/*
+				 * The player types in the item that they have chosen
+				 * The computer uses the random item from above to pass more tests
+				 * The else at the bottom of this first if test was for testing purposes.
+				 */
 				if(playerItem.equalsIgnoreCase("Fire"))
 				{
 					if(item.equals("Water"))
@@ -56,6 +70,10 @@ public class RPCController
 					{
 						System.out.println(item + "! Ok, it was a tie.");
 					}
+//					else
+//					{
+//						System.out.println("An Error has occurred");
+//					}
 					
 				}
 				if(playerItem.equalsIgnoreCase("Water"))
@@ -88,9 +106,14 @@ public class RPCController
 						System.out.println(item + "! Ok, it was a tie.");
 					}
 				}
-				else if(playerItem.equalsIgnoreCase(""))
+				/*
+				 * When the player inserts an incorrect value
+				 * The console will display the following message.
+				 */
+				else if(!playerItem.equalsIgnoreCase("Fire") && !playerItem.equalsIgnoreCase("Water") && !playerItem.equalsIgnoreCase("Earth"))
 				{
-					System.out.println("If you didn't want to play, you could have just said so!");
+					System.out.println("If you didn't want to play, you could have just said so.");
+					break;
 				}
 			}
 		}
@@ -107,22 +130,22 @@ public class RPCController
 		itemList.add("Earth");
 	}
 	
-//	public String randomItemFromList(String item)
-//	{
-//		item = "";
-//		int randomNumber = (int)(Math.random() * 2);
-//		if(randomNumber <= 0)
-//		{
-//			item = itemList.get(0);
-//		}
-//		if(randomNumber == 1)
-//		{
-//			item = itemList.get(1);
-//		}
-//		if(randomNumber == 2)
-//		{
-//			item = itemList.get(2);
-//		}
-//		return item;
-//	}
+	public String randomItemFromList(String item)
+	{
+		item = "";
+		int randomNumber = (int)(Math.random() * 2);
+		if(randomNumber <= 0)
+		{
+			item = itemList.get(0);
+		}
+		if(randomNumber == 1)
+		{
+			item = itemList.get(1);
+		}
+		if(randomNumber == 2)
+		{
+			item = itemList.get(2);
+		}
+		return item;
+	}
 }
